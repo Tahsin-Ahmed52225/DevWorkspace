@@ -44,7 +44,7 @@ public function sadmin_login(Request $request){
     
     else if  ($request->isMethod("GET")){   
         return view('sadmin.login');
-    }
+    }   
 }
 
 //super admin login 
