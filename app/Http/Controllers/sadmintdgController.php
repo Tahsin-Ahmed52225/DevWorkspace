@@ -8,6 +8,10 @@ use Validator;
 
 use Auth;
 
+use App\User;
+
+use Illuminate\Support\Facades\Hash;
+
 class sadmintdgController extends Controller
 {
 
@@ -38,8 +42,7 @@ public function sadmin_login(Request $request){
         }else{
             return "echo 'mismatch'";
         }
-        
-        
+         
     }
     
     else if  ($request->isMethod("GET")){   
@@ -58,6 +61,61 @@ public function logout(){
 public function addmember(Request $request){
     if ($request->isMethod("GET")){
         return view('sadmin.addMember');
+    }
+    else if  ($request->isMethod("POST")){
+        $input_array = [
+
+            'name' => $request->post('tdg_username'),
+
+            'phone' => $request->post('tdg_contact'),
+
+            'email' =>  $request->post('tdg_email'),
+
+            'password'  =>  $request->post('tdg_password'),
+
+            'position'  =>  $request->post('tdg_position'),
+
+            'department'  =>  $request->post('tdg_department'),
+
+            'state'  =>  $request->post('tdg_state'),
+        ];
+
+
+
+        $validator = Validator::make($input_array,[
+
+            'name' => 'required',
+
+            'phone' => 'required',
+
+            'email' => 'required|email|unique:users',
+
+            'password' => 'required|min:6',
+
+            'position'  =>  'required',
+
+            'department'  => 'required',
+
+            'state'  =>  'required',
+
+        ]);
+
+        $user = User::create([
+
+            'name' => $input_array['name'],
+
+            'email' => $input_array['email'],
+
+            'password' => Hash::make($input_array['password']),
+
+            'type' => $input_array['position'],
+
+            'department' => $input_array['department'],
+
+            'state' => $input_array['state'],
+
+        ]);
+       return "echo 'created User'";
     }
 } 
 

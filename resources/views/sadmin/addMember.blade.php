@@ -1,23 +1,68 @@
 @extends('layouts.sadmin_layout')
 @section('content')
+<div class="container-fluid">
 
+    <div class="container pt-5 pb-5">
+    <h4 style="font-weight: 700;" class="pb-5">Add Member <i class="fa fa-user-plus pl-1" ></i></h4>
 
+    <form method="POST" action="{{ route('sadmin.addMember') }}">
+    @csrf
 
-
-
-
-
-
-
-
-<!-- Footer -->
-<footer class="sticky-footer bg-white">
-    <div class="container my-auto">
-        <div class="copyright text-center my-auto">
-            <span>Copyright &copy; TheDevGarden 2020</span>
+    <div class="form-row">
+        <div class="form-group col-md-6">
+            <input type="text" class="form-control" id="inputAddress" placeholder="Name" name="tdg_username">
+        </div>
+        <div class="form-group col-md-6">
+        <input type="text" class="form-control" id="inputPassword4" placeholder="Contact No" name="tdg_contact">
         </div>
     </div>
-</footer>
+    
+    <div class="form-row">
+        <div class="form-group col-md-6">
+        <input type="email" placeholder="Email"class="form-control" id="inputEmail4" name="tdg_email">
+        </div>
+        <div class="form-group col-md-6">
+        <input type="password" class="form-control" id="inputPassword4" placeholder="Password" name="tdg_password">
+        </div>
+    </div>
+    <div class="form-row">
+        <div class="form-group col-md-4">
+            <input type="text" class="form-control" id="inputAddress" placeholder="Position" name="tdg_position">
+        </div>
+        <div class="form-group col-md-4">
+        <select id="inputState" class="form-control" name="tdg_department">
+            <option>Web Development</option>
+            <option>Graphics</option>
+            <option>Marketing</option>
+        </select>
+        </div>
+        <div class="form-group col-md-2 mt-1">
+            <div class="form-check">
+                <input class="form-check-input" type="radio" name="tdg_state"  value='1' >
+                <label class="form-check-label" for="gridRadios1">
+                Locked
+                </label>
+            </div>
+        </div>
+        <div class="form-group col-md-2 mt-1">
+           <div class="form-check">
+            <input class="form-check-input" type="radio" name="tdg_state"  value='0' >
+            <label class="form-check-label" for="gridRadios2">
+                Unlock
+            </label>
+           </div>
+
+        </div>
+    </div>
+       
+    
+    <button type="submit" class="btn btn-primary mt-3">Register</button>
+    </form>
+
+    </div>
+</div>
+<!-- Footer -->
+
             <!-- End of Footer -->
 
         </div>
