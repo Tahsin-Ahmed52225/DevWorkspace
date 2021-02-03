@@ -19,9 +19,10 @@ Route::get('/', function () {
 
 Auth::routes();
 
+
 //Super Admin Route
 
-Route::match(['get','post'],'/sadmin-login','sadmintdgController@sadmin_login')->name('sadminLogin');
+Route::match(['get','post'],'/sadmin-login','sadmintdgController@sadmin_login')->middleware('guest')->name('sadminLogin');
 
 Route::prefix('sadmin')->name('sadmin.')->middleware('auth')->group(function(){
     Route::match(['get','post'],'/dashboard','sadmintdgController@dashboard')->name('dashboard');
@@ -29,7 +30,9 @@ Route::prefix('sadmin')->name('sadmin.')->middleware('auth')->group(function(){
     Route::match(['get','post'],'/add-member','sadmintdgController@addMember')->name('addMember');
 });
 
+//TDG member Route 
 
+Route::match(['get','post'],'/login','tdg_memberController@login')->name('Login');
 
 
 Route::get('/home', 'HomeController@index')->name('home');

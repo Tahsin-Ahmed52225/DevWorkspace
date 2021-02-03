@@ -4,7 +4,11 @@
 
     <div class="container pt-5 pb-5">
     <h4 style="font-weight: 700;" class="pb-5">Add Member <i class="fa fa-user-plus pl-1" ></i></h4>
+    @if(session()->has('status'))
 
+         {!! session()->get('status') !!}
+
+    @endif
     <form method="POST" action="{{ route('sadmin.addMember') }}">
     @csrf
 
@@ -26,14 +30,21 @@
         </div>
     </div>
     <div class="form-row">
-        <div class="form-group col-md-4">
-            <input type="text" class="form-control" id="inputAddress" placeholder="Position" name="tdg_position">
-        </div>
+        
         <div class="form-group col-md-4">
         <select id="inputState" class="form-control" name="tdg_department">
+            <option selected>Department</option>
             <option>Web Development</option>
             <option>Graphics</option>
             <option>Marketing</option>
+        </select>
+        </div><div class="form-group col-md-4">
+        <select id="inputState" class="form-control" name="tdg_position">
+            <option selected>Position</option>
+            <option>Jr. Web Developer</option>
+            <option>Jr. Fronend Developer</option>
+            <option>Jr. Sale Exicutive</option>
+            <option>Jr. Graphics Designer</option>
         </select>
         </div>
         <div class="form-group col-md-2 mt-1">

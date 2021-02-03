@@ -10823,6 +10823,12 @@ a:focus {
   }
 }
 
+.bg-login-image2 {
+  background: url("/img/login2.png");
+  background-position: center;
+  background-size: cover;
+  margin-top:50px;
+}
 .bg-login-image {
   background: url("/img/login.png");
   background-position: center;

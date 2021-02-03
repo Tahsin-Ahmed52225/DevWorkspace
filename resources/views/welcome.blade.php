@@ -69,7 +69,10 @@
 
             <div class="content">
                 <div class="title m-b-md">
-                    The Dev Garden
+                    TheDevGarden
+                </div>
+                <div class="m-b-md">
+                    <h2> Workspace </h2> 
                 </div>
 
               

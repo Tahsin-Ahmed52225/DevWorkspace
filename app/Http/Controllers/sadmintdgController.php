@@ -40,7 +40,22 @@ public function sadmin_login(Request $request){
         if(Auth::attempt(['email' => $email, 'password' => $password ])){
             return redirect()->route('sadmin.dashboard');
         }else{
-            return "echo 'mismatch'";
+          
+
+                $status = '<div class="alert alert-warning   show m-0 mt-2 mb-2 p-2" role="alert">
+
+                           Wrong credentials Admin! try again 
+
+                      <button type="button" class="close pb-2" data-dismiss="alert" aria-label="Close">
+
+                        <span aria-hidden="true">&times;</span>
+
+                      </button>
+
+                    </div>';
+
+
+                return redirect()->back()->with('status', $status)->withInput();
         }
          
     }
@@ -115,7 +130,20 @@ public function addmember(Request $request){
             'state' => $input_array['state'],
 
         ]);
-       return "echo 'created User'";
+        $status = '<div class="alert alert-success   show m-0 mt-2 mb-2 p-2" role="alert">
+
+                           Member added to TDG wordspace
+
+                      <button type="button" class="close pb-2" data-dismiss="alert" aria-label="Close">
+
+                        <span aria-hidden="true">&times;</span>
+
+                      </button>
+
+                    </div>';
+
+
+                return redirect()->back()->with('status', $status);
     }
 } 
 
