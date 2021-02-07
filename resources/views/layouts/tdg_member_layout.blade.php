@@ -53,21 +53,21 @@
 
             <!-- Heading -->
             <div class="sidebar-heading">
-                Member Panel
+                Hourly Panel
             </div>
 
             <!-- Nav Item - Pages Collapse Menu -->
             <li class="nav-item">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo"
                     aria-expanded="true" aria-controls="collapseTwo">
-                    <i class="fa fa-user" ></i>
-                    <span>Member</span>
+                    <i class="fa fa-clock" ></i>
+                    <span>Time Tracker</span>
                 </a>
                 <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                        
-                               <a class="collapse-item" href="{{ route('sadmin.addMember') }}"> <i class="fa fa-user-plus pr-1" ></i> Add Member</a> 
-                               <a class="collapse-item" href="cards.html"><i class="fa fa-users pr-1" ></i>View Member</a>
+                               <a class="collapse-item" href="{{ route('tdg.timeTraker') }}"> <i class="fa fa-clock pr-2" ></i>Start Timer</a> 
+                               <a class="collapse-item" href="#"><i class="fa fa-calendar pr-2" ></i>View Timer</a>
                     </div>
                 </div>
             </li>

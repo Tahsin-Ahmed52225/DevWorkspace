@@ -41,10 +41,10 @@
         </div><div class="form-group col-md-4">
         <select id="inputState" class="form-control" name="tdg_position">
             <option selected>Position</option>
-            <option>Jr. Web Developer</option>
-            <option>Jr. Fronend Developer</option>
-            <option>Jr. Sale Exicutive</option>
-            <option>Jr. Graphics Designer</option>
+            <option>Web Developer</option>
+            <option>Frontend Developer</option>
+            <option>Sale Exicutive</option>
+            <option>Graphics Designer</option>
         </select>
         </div>
         <div class="form-group col-md-2 mt-1">
@@ -106,6 +106,8 @@
             </div>
         </div>
     </div>
+
+
 
 
 @endsection

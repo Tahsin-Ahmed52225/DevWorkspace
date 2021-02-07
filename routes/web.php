@@ -22,21 +22,24 @@ Auth::routes();
 
 //Super Admin Route
 
-Route::match(['get','post'],'/sadmin-login','sadmintdgController@sadmin_login')->middleware('guest')->name('sadminLogin');
+Route::match(['get','post'],'/sadmin-login','sadmintdgController@sadmin_login')->middleware(['guest'])->name('sadminLogin');
 
-Route::prefix('sadmin')->name('sadmin.')->middleware('auth')->group(function(){
+Route::prefix('sadmin')->name('sadmin.')->middleware(['auth','admin'])->group(function(){
+
     Route::match(['get','post'],'/dashboard','sadmintdgController@dashboard')->name('dashboard');
     Route::get('/logout','sadmintdgController@logout')->name('logout');
     Route::match(['get','post'],'/add-member','sadmintdgController@addMember')->name('addMember');
+    Route::get('/viewMember','sadmintdgController@viewMember')->name('viewMember');
 });
 
 //TDG member Route 
 
 Route::match(['get','post'],'/login','tdg_memberController@login')->name('Login');
-Route::prefix('tdg')->name('tdg.')->middleware('auth')->group(function(){
+Route::prefix('tdg')->name('tdg.')->middleware(['auth','member'])->group(function(){
     Route::match(['get','post'],'/dashboard','tdg_memberController@dashboard')->name('dashboard');
-    Route::get('/logout','sadmintdgController@logout')->name('logout');
-    Route::match(['get','post'],'/add-member','sadmintdgController@addMember')->name('addMember');
+
+    Route::match(['get','post'],'/timeTraker','tdg_memberController@timeTraker')->name('timeTraker');
+  
 });
 
 

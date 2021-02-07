@@ -146,6 +146,11 @@ public function addmember(Request $request){
                 return redirect()->back()->with('status', $status);
     }
 } 
+public function viewMember(){
+    $user = User::where('id','!=',auth()->id())->get();
+
+    return view('sadmin.viewMember',compact('user'));
+}
 
 
 

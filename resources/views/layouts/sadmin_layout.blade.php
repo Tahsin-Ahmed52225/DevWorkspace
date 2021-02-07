@@ -13,6 +13,7 @@
 
     <!-- Custom fonts for this template-->
     <link href="{{asset('vendor/fontawesome-free/css/all.min.css')}}" rel="stylesheet" type="text/css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <link
         href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
         rel="stylesheet">
@@ -67,7 +68,7 @@
                     <div class="bg-white py-2 collapse-inner rounded">
                        
                                <a class="collapse-item" href="{{ route('sadmin.addMember') }}"> <i class="fa fa-user-plus pr-1" ></i> Add Member</a> 
-                               <a class="collapse-item" href="cards.html"><i class="fa fa-users pr-1" ></i>View Member</a>
+                               <a class="collapse-item" href="{{ route('sadmin.viewMember') }}"><i class="fa fa-users pr-1" ></i>View Member</a>
                     </div>
                 </div>
             </li>

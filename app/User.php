@@ -50,6 +50,7 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+    
     public function isGodMODE()
 
     {
@@ -76,7 +77,7 @@ class User extends Authenticatable
 
     {
 
-        if($this->type != 'SuperAdmin')
+        if($this->type == 'Web Developer' or $this->type == 'Frontend Developer' or $this->type == 'Sale Exicutive' or $this->type == 'Graphics Designer')
 
         {
 
