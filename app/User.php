@@ -50,4 +50,47 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+    public function isGodMODE()
+
+    {
+
+        if($this->type == 'SuperAdmin')
+
+        {
+
+            return true;
+
+        }
+
+        else
+
+        {
+
+            return false;
+
+        }
+
+    }
+
+    public function isMember()
+
+    {
+
+        if($this->type != 'SuperAdmin')
+
+        {
+
+            return true;
+
+        }
+
+        else
+
+        {
+
+            return false;
+
+        }
+
+    }
 }

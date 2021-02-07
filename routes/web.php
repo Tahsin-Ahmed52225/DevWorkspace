@@ -33,6 +33,11 @@ Route::prefix('sadmin')->name('sadmin.')->middleware('auth')->group(function(){
 //TDG member Route 
 
 Route::match(['get','post'],'/login','tdg_memberController@login')->name('Login');
+Route::prefix('tdg')->name('tdg.')->middleware('auth')->group(function(){
+    Route::match(['get','post'],'/dashboard','tdg_memberController@dashboard')->name('dashboard');
+    Route::get('/logout','sadmintdgController@logout')->name('logout');
+    Route::match(['get','post'],'/add-member','sadmintdgController@addMember')->name('addMember');
+});
 
 
 Route::get('/home', 'HomeController@index')->name('home');
