@@ -55,6 +55,9 @@ class tdg_memberController extends Controller
   public function dashboard(){
       return view("tdg_member.dashboard");
   }
+  public function profile(){
+    return view("tdg_member.profile");
+ }
   public function timeTraker(){
     return view("tdg_member.timeTraker");
  }

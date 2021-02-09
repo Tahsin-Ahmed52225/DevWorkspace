@@ -2,6 +2,9 @@
 @section('content')
 <div class="container-fluid">
 
+<link rel="stylesheet" href="{{asset('css/time.css')}}">
+<script src="{{asset('js/time.js')}}" type="text/javascript" charset="utf-8" async defer></script>
+
                     <!-- Page Heading -->
                     <div class="d-sm-flex align-items-center justify-content-between mb-4">
                         <h1 class="h3 mb-0 text-gray-800">Dashboard</h1>
@@ -17,18 +20,44 @@
                             <div class="card border-left-primary shadow h-100 py-2">
                                 <div class="card-body">
                                     <div class="row no-gutters align-items-center">
-                                        <div class="col mr-2">
+                                        <div class="col-5 mr-2">
                                             <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
-                                                Earnings (Monthly)</div>
-                                            <div class="h5 mb-0 font-weight-bold text-gray-800">$40,000</div>
+                                                Check In</div>
+                                            <div   id="stopwatch" class="h5 mb-0 font-weight-bold text-gray-800"> 00:00:00 </div>
+                                        </div>
+                                        <div class="col-auto mr-2">
+                                             <button class="clock_button btn btn btn-success " onclick="startTimer()">Start</button>
                                         </div>
                                         <div class="col-auto">
-                                            <i class="fas fa-calendar fa-2x text-gray-300"></i>
+                                             <button class="clock_button btn btn-danger " data-toggle="modal" data-target="#exampleModalCenter"onclick="stopTimer()">Stop</button>
                                         </div>
+                                        
                                     </div>
                                 </div>
                             </div>
                         </div>
+                        <!-- check in modal starts  -->
+                        <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-centered" role="document">
+                            <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                ...
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                <button type="button" class="btn btn-primary">Save changes</button>
+                            </div>
+                            </div>
+                        </div>
+                        </div>
+
+                        <!-- check in modal ends  -->
 
                         <!-- Earnings (Monthly) Card Example -->
                         <div class="col-xl-3 col-md-6 mb-4">
