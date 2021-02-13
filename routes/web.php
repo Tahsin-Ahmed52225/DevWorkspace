@@ -37,9 +37,9 @@ Route::prefix('sadmin')->name('sadmin.')->middleware(['auth','admin'])->group(fu
 Route::match(['get','post'],'/login','tdg_memberController@login')->name('Login');
 Route::prefix('tdg')->name('tdg.')->middleware(['auth','member'])->group(function(){
     Route::match(['get','post'],'/dashboard','tdg_memberController@dashboard')->name('dashboard');
+    Route::match(['get','post'],'/dashboard/timer','tdg_memberController@timeTraker')->name('timer');
     Route::match(['get','post'],'/profile','tdg_memberController@profile')->name('profile');
 
-    Route::match(['get','post'],'/timeTraker','tdg_memberController@timeTraker')->name('timeTraker');
   
 });
 

@@ -10,6 +10,8 @@ use Auth;
 
 use App\User;
 
+use App\timetrack;
+
 use Illuminate\Support\Facades\Hash;
 
 class tdg_memberController extends Controller
@@ -58,7 +60,28 @@ class tdg_memberController extends Controller
   public function profile(){
     return view("tdg_member.profile");
  }
-  public function timeTraker(){
-    return view("tdg_member.timeTraker");
+  public function timeTraker(Request $request){
+    
+    $new_count = timetrack::create([
+
+        'memberID' => auth()->id(),
+
+        'description' => $request->description,
+
+        'hour' => (int) $request->hr,
+
+        'min' => (int) $request->min,
+
+    ]);
+    
+    
+    $msg = "<div class='alert alert-success fade show' role='alert'>"
+                  . $request->hr ." Hour " . $request->min . " Min added to today
+                 <button type='button' class='close' data-dismiss='alert' aria-label='Close'>
+                 <span aria-hidden='true'>&times;</span>
+              </button> 
+             </div>"
+              ;
+    return response()->json(array('msg'=> $msg), 200);
  }
 }

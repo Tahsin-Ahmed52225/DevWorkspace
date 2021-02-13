@@ -1,5 +1,6 @@
 @extends('layouts.tdg_member_layout')
 @section('content')
+<meta name="csrf-token" content="{{ csrf_token() }}"
 <div class="container-fluid">
 
 <link rel="stylesheet" href="{{asset('css/time.css')}}">
@@ -7,14 +8,14 @@
 
                     <!-- Page Heading -->
                     <div class="d-sm-flex align-items-center justify-content-between mb-4">
-                        <h1 class="h3 mb-0 text-gray-800">Dashboard</h1>
+                        <h1 id="page_name" class="h3 mb-0 text-gray-800">Dashboard</h1>
                         <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
                                 class="fas fa-download fa-sm text-white-50"></i> Generate Report</a>
                     </div>
-
+                    <div id="time_msg"></div>
                     <!-- Content Row -->
                     <div class="row">
-
+                   
                         <!-- Earnings (Monthly) Card Example -->
                         <div class="col-xl-3 col-md-6 mb-4">
                             <div class="card border-left-primary shadow h-100 py-2">
@@ -26,7 +27,7 @@
                                             <div   id="stopwatch" class="h5 mb-0 font-weight-bold text-gray-800"> 00:00:00 </div>
                                         </div>
                                         <div class="col-auto mr-2">
-                                             <button class="clock_button btn btn btn-success " onclick="startTimer()">Start</button>
+                                             <button  class="clock_button btn btn btn-success " onclick="startTimer()">Start</button>
                                         </div>
                                         <div class="col-auto">
                                              <button class="clock_button btn btn-danger " data-toggle="modal" data-target="#exampleModalCenter"onclick="stopTimer()">Stop</button>
@@ -41,17 +42,23 @@
                         <div class="modal-dialog modal-dialog-centered" role="document">
                             <div class="modal-content">
                             <div class="modal-header">
-                                <h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5>
+                                <h5 class="modal-title" id="exampleModalLongTitle">Description</h5>
                                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                 <span aria-hidden="true">&times;</span>
                                 </button>
                             </div>
                             <div class="modal-body">
-                                ...
+                                <form  class="was-validated">
+                                    <div class="mb-3">
+                                        <label for="validationTextarea">Please enter your description</label>
+                                        <textarea id='timer_description' class="form-control is-invalid" id="validationTextarea" placeholder="Required example textarea" required></textarea>
+                                       
+                                    </div>
+                                </form>
                             </div>
                             <div class="modal-footer">
-                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                <button type="button" class="btn btn-primary">Save changes</button>
+                               
+                                <button type="button" id="timer_submit" class="btn btn-primary" data-dismiss="modal">Submit</button>
                             </div>
                             </div>
                         </div>

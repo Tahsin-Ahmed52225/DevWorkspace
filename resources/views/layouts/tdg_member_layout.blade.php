@@ -9,7 +9,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>TDG WP</title>
+    <title id="panel_title">TDG WP</title>
 
     <!-- Custom fonts for this template-->
     <link href="{{asset('vendor/fontawesome-free/css/all.min.css')}}" rel="stylesheet" type="text/css">
@@ -19,6 +19,7 @@
 
     <!-- Custom styles for this template-->
     <link href="{{asset('css/sb-admin-2.css')}}" rel="stylesheet">
+    <script src="{{asset('js/time.js')}}" type="text/javascript" charset="utf-8" async defer></script>
 
 </head>
 
@@ -61,12 +62,12 @@
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo"
                     aria-expanded="true" aria-controls="collapseTwo">
                     <i class="fa fa-clock" ></i>
-                    <span>Time Tracker</span>
+                    <span id="time_title">Time Tracker</span>
                 </a>
                 <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                        
-                               <a class="collapse-item" href="{{ route('tdg.timeTraker') }}"> <i class="fa fa-clock pr-2" ></i>Start Timer</a> 
+                               <a class="collapse-item" href=#> <i class="fa fa-clock pr-2" ></i>Start Timer</a> 
                                <a class="collapse-item" href="#"><i class="fa fa-calendar pr-2" ></i>View Timer</a>
                     </div>
                 </div>
