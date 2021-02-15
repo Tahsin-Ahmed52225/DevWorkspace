@@ -2,9 +2,9 @@
 @section('content')
 <meta name="csrf-token" content="{{ csrf_token() }}"
 <div class="container-fluid">
-
 <link rel="stylesheet" href="{{asset('css/time.css')}}">
-<script src="{{asset('js/time.js')}}" type="text/javascript" charset="utf-8" async defer></script>
+
+
 
                     <!-- Page Heading -->
                     <div class="d-sm-flex align-items-center justify-content-between mb-4">
@@ -17,21 +17,28 @@
                     <div class="row">
                    
                         <!-- Earnings (Monthly) Card Example -->
-                        <div class="col-xl-3 col-md-6 mb-4">
+                        <div class="col-xl-6 col-md-12 mb-4">
                             <div class="card border-left-primary shadow h-100 py-2">
                                 <div class="card-body">
                                     <div class="row no-gutters align-items-center">
-                                        <div class="col-5 mr-2">
-                                            <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
-                                                Check In</div>
-                                            <div   id="stopwatch" class="h5 mb-0 font-weight-bold text-gray-800"> 00:00:00 </div>
+                                        <div class="col-3 ">
+                                            <div class="text-xs font-weight-bold text-primary text-uppercase mb-5">
+                                                Check In
+                                            </div> 
                                         </div>
-                                        <div class="col-auto mr-2">
-                                             <button  class="clock_button btn btn btn-success " onclick="startTimer()">Start</button>
+                                        <div class="col-6 ">
+                                        <div   id="stopwatch" style ="font-size: 60px;" class="h5 mb-0 font-weight-bold text-gray"> 00:00:00 </div>
                                         </div>
-                                        <div class="col-auto">
-                                             <button class="clock_button btn btn-danger " data-toggle="modal" data-target="#exampleModalCenter"onclick="stopTimer()">Stop</button>
+                                        <div class="col-3 ">
+                                            <div class="row mb-2">
+                                                 <button id="start_button"  class="clock_button btn btn btn-success " >Start</button>
+                                            </div>
+                                            <div class="row">
+                                                 <button class="clock_button btn btn-danger " data-toggle="modal" data-target="#exampleModalCenter">Stop</button>
+                                            </div>
+                                             
                                         </div>
+                                        
                                         
                                     </div>
                                 </div>
@@ -51,7 +58,7 @@
                                 <form  class="was-validated">
                                     <div class="mb-3">
                                         <label for="validationTextarea">Please enter your description</label>
-                                        <textarea id='timer_description' class="form-control is-invalid" id="validationTextarea" placeholder="Required example textarea" required></textarea>
+                                        <textarea id='timer_description' class="form-control is-invalid" id="validationTextarea" placeholder="Enter Description..." required></textarea>
                                        
                                     </div>
                                 </form>
@@ -67,22 +74,7 @@
                         <!-- check in modal ends  -->
 
                         <!-- Earnings (Monthly) Card Example -->
-                        <div class="col-xl-3 col-md-6 mb-4">
-                            <div class="card border-left-success shadow h-100 py-2">
-                                <div class="card-body">
-                                    <div class="row no-gutters align-items-center">
-                                        <div class="col mr-2">
-                                            <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
-                                                Earnings (Annual)</div>
-                                            <div class="h5 mb-0 font-weight-bold text-gray-800">$215,000</div>
-                                        </div>
-                                        <div class="col-auto">
-                                            <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                     
 
                         <!-- Earnings (Monthly) Card Example -->
                         <div class="col-xl-3 col-md-6 mb-4">
