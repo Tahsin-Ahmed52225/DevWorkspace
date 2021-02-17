@@ -61,8 +61,19 @@ class tdg_memberController extends Controller
     return view("tdg_member.profile");
  }
   public function timeTraker(Request $request){
-    
+     
+    if($request->hr == "00" && $request->min == "00"){
+        $msg = "<div class='alert alert-warning fade show' role='alert'>
+                  Less than one minite will not be added
+                 <button type='button' class='close' data-dismiss='alert' aria-label='Close'>
+                 <span aria-hidden='true'>&times;</span>
+              </button> 
+             </div>"
+              ;
+
+    }else{
     $new_count = timetrack::create([
+        
 
         'memberID' => auth()->id(),
 
@@ -82,6 +93,11 @@ class tdg_memberController extends Controller
               </button> 
              </div>"
               ;
+    }
     return response()->json(array('msg'=> $msg), 200);
  }
+ public function timesheet(){
+    $timer = timetrack::where("memberID",'=', auth()->id())->get();
+    return view("tdg_member.timesheet",compact('timer'));
+}
 }

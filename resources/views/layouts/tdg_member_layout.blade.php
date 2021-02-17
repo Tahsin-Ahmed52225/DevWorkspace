@@ -59,18 +59,13 @@
 
             <!-- Nav Item - Pages Collapse Menu -->
             <li class="nav-item">
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo"
-                    aria-expanded="true" aria-controls="collapseTwo">
-                    <i class="fa fa-clock" ></i>
-                    <span id="time_title">Time Tracker</span>
-                </a>
-                <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
-                    <div class="bg-white py-2 collapse-inner rounded">
-                       
-                               <a class="collapse-item" href=#> <i class="fa fa-clock pr-2" ></i>Start Timer</a> 
-                               <a class="collapse-item" href="#"><i class="fa fa-calendar pr-2" ></i>View Timer</a>
-                    </div>
-                </div>
+                    
+                    <span id="time_title" class="ml-3" style="color:white; font-size:20px"></span></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{{ route('tdg.timesheet')}}">
+                    <i class="fas fa-fw fa-clock"></i>
+                    <span>Time Sheet</span></a>
             </li>
 
             <!-- Nav Item - Utilities Collapse Menu -->
@@ -365,7 +360,24 @@
 
                 </div>
                 <!-- /.container-fluid -->
-
+        <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
+                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                </div>
+                <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
+                <div class="modal-footer">
+                    <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+                    <a class="btn btn-primary" href="{{ route('sadmin.logout') }}">Logout</a>
+                </div>
+            </div>
+        </div>
+    </div>
            
 
     <!-- Bootstrap core JavaScript-->

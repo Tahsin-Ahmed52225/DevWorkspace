@@ -30,6 +30,7 @@ Route::prefix('sadmin')->name('sadmin.')->middleware(['auth','admin'])->group(fu
     Route::get('/logout','sadmintdgController@logout')->name('logout');
     Route::match(['get','post'],'/add-member','sadmintdgController@addMember')->name('addMember');
     Route::get('/viewMember','sadmintdgController@viewMember')->name('viewMember');
+    Route::match(['get','post'],'/timesheet','sadmintdgController@timesheet')->name('timesheet');
 });
 
 //TDG member Route 
@@ -39,6 +40,7 @@ Route::prefix('tdg')->name('tdg.')->middleware(['auth','member'])->group(functio
     Route::match(['get','post'],'/dashboard','tdg_memberController@dashboard')->name('dashboard');
     Route::match(['get','post'],'/dashboard/timer','tdg_memberController@timeTraker')->name('timer');
     Route::match(['get','post'],'/profile','tdg_memberController@profile')->name('profile');
+    Route::match(['get','post'],'/timesheet','tdg_memberController@timesheet')->name('timesheet');
 
   
 });

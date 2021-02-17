@@ -10,7 +10,11 @@ use Auth;
 
 use App\User;
 
+use App\timetrack;
+
 use Illuminate\Support\Facades\Hash;
+
+use Illuminate\Support\Facades\DB;
 
 class sadmintdgController extends Controller
 {
@@ -151,7 +155,12 @@ public function viewMember(){
 
     return view('sadmin.viewMember',compact('user'));
 }
-
+public function timesheet(){
+    $user_time = DB::table('timetrack')
+          ->join('users','users.id','=','timetrack.memberID')
+          ->get(['users.name','timetrack.created_at','timetrack.description','timetrack.hour','timetrack.min']);
+    return view("sadmin.timesheet",compact('user_time'));
+}
 
 
 
