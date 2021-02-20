@@ -94,4 +94,13 @@ class User extends Authenticatable
         }
 
     }
+    public function isManager()
+    {
+        if($this->type == "Manager"){
+            return true;
+        }
+        else{
+            return false;
+        }
+    }
 }

@@ -1,12 +1,10 @@
 <?php
 
-
-
 namespace App\Http\Middleware;
 
 use Closure;
 
-class MemberMiddleware
+class ManagerMiddleware
 {
     /**
      * Handle an incoming request.
@@ -17,7 +15,7 @@ class MemberMiddleware
      */
     public function handle($request, Closure $next)
     {
-        if(auth()->user()-> isMember()){
+        if(auth()->user()-> isManager()){
 
             return $next($request);
 
@@ -25,17 +23,16 @@ class MemberMiddleware
         auth()->logout();
         $status = "<div class='alert alert-warning   show m-0 mt-2 mb-2 p-2' role='alert'>
 
-                            You don't have member access
+                You don't have Manager access
 
-                            <button type='button' class='close pb-2' data-dismiss='alert' aria-label='Close'>
+                <button type='button' class='close pb-2' data-dismiss='alert' aria-label='Close'>
 
-                                <span aria-hidden='true'>&times;</span>
+                    <span aria-hidden='true'>&times;</span>
 
-                            </button>
+                </button>
 
-                    </div>";
+        </div>";
 
         return redirect('/login')->with('status',$status);
-        
- }
+    }
 }

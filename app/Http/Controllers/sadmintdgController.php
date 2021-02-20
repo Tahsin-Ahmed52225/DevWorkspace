@@ -69,12 +69,9 @@ public function sadmin_login(Request $request){
     }   
 }
 
-//super admin login 
 
-public function logout(){
-    Auth::logout();
-    return redirect(route('sadminLogin'));
-}
+
+
 
 //super add member 
 public function addmember(Request $request){

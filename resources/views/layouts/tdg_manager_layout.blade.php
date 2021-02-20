@@ -9,17 +9,17 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>TDG SUPER</title>
+    <title id="panel_title">TDG WP</title>
 
     <!-- Custom fonts for this template-->
     <link href="{{asset('vendor/fontawesome-free/css/all.min.css')}}" rel="stylesheet" type="text/css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <link
         href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
         rel="stylesheet">
 
     <!-- Custom styles for this template-->
     <link href="{{asset('css/sb-admin-2.css')}}" rel="stylesheet">
+    <script src="{{asset('js/time.js')}}" type="text/javascript" charset="utf-8" async defer></script>
 
 </head>
 
@@ -33,10 +33,10 @@
 
             <!-- Sidebar - Brand -->
             <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
-                <div class="sidebar-brand-icon rotate-n-15">
-                    <i class="fas fa-laugh-wink"></i>
+                <div class="sidebar-brand-icon ">
+                    <i class="fas fa-suitcase"></i>
                 </div>
-                <div class="sidebar-brand-text mx-3">TDG<sup>Admin</sup></div>
+                <div class="sidebar-brand-text mx-3">TDG<sup>WP</sup></div>
             </a>
 
             <!-- Divider -->
@@ -44,52 +44,37 @@
 
             <!-- Nav Item - Dashboard -->
             <li class="nav-item">
-                <a class="nav-link" href="{{ route('sadmin.dashboard')}}">
+                <a class="nav-link" href="{{ route('tdg-manager.dashboard')}}">
                     <i class="fas fa-fw fa-tachometer-alt"></i>
                     <span>Dashboard</span></a>
             </li>
 
             <!-- Divider -->
             <hr class="sidebar-divider">
-
-            <!-- Heading -->
-            <div class="sidebar-heading">
-                Member Panel
-            </div>
-
-            <!-- Nav Item - Pages Collapse Menu -->
             <li class="nav-item">
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo"
-                    aria-expanded="true" aria-controls="collapseTwo">
-                    <i class="fa fa-user" ></i>
-                    <span>Member</span>
-                </a>
-                <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
-                    <div class="bg-white py-2 collapse-inner rounded">
-                       
-                               <a class="collapse-item" href="{{ route('sadmin.addMember') }}"> <i class="fa fa-user-plus pr-1" ></i> Add Member</a> 
-                               <a class="collapse-item" href="{{ route('sadmin.viewMember') }}"><i class="fa fa-users pr-1" ></i>View Member</a>
-                               <a class="collapse-item" href="{{ route('sadmin.timesheet') }}"><i class="fa fa-clock pr-1" ></i>View Timesheet</a>
-                    </div>
-                </div>
+                    <span id="time_title" class="ml-3" style="color:white; font-size:20px"></span></a>
             </li>
-
+            <li class="nav-item">
+                <a class="nav-link" href="{{ route('tdg-manager.timesheet')}}">
+                    <i class="fas fa-fw fa-clock"></i>
+                    <span>Time Sheet</span></a>
+            </li>
 
             <!-- Nav Item - Utilities Collapse Menu -->
             <li class="nav-item">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities"
                     aria-expanded="true" aria-controls="collapseUtilities">
-                    <i class="fas fa-fw fa-wrench"></i>
-                    <span>Utilities</span>
+                    <i class="fas fa-fw fa-folder-plus"></i>
+                    <span>Projects</span>
                 </a>
                 <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities"
                     data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
-                        <h6 class="collapse-header">Custom Utilities:</h6>
-                        <a class="collapse-item" href="utilities-color.html">Colors</a>
-                        <a class="collapse-item" href="utilities-border.html">Borders</a>
-                        <a class="collapse-item" href="utilities-animation.html">Animations</a>
-                        <a class="collapse-item" href="utilities-other.html">Other</a>
+                        <h6 class="collapse-header">Project Options:</h6>
+                        <a class="collapse-item" href='{{ route("tdg-manager.addProject") }}'>Add Projects</a>
+                        <a class="collapse-item" href="utilities-border.html">View Projects</a>
+                        <a class="collapse-item" href="utilities-animation.html">Project Update</a>
+                       
                     </div>
                 </div>
             </li>
@@ -334,7 +319,7 @@
                             <!-- Dropdown - User Information -->
                             <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
                                 aria-labelledby="userDropdown">
-                                <a class="dropdown-item" href="#">
+                                <a class="dropdown-item" href="{{ route('tdg-manager.profile') }}">
                                     <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
                                     Profile
                                 </a>
@@ -385,7 +370,6 @@
             </div>
         </div>
     </div>
-
            
 
     <!-- Bootstrap core JavaScript-->
@@ -397,6 +381,7 @@
 
     <!-- Custom scripts for all pages-->
     <script src="{{asset('js/sb-admin-2.min.js')}}"></script>
+    
 
 </body>
 

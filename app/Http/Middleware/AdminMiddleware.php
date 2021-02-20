@@ -35,6 +35,6 @@ class AdminMiddleware
 
                     </div>";
 
-        return redirect('login')->with('status',$status);
+        return redirect('/sadmin-login')->with('status',$status);
     }
 }

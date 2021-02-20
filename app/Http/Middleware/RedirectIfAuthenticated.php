@@ -19,7 +19,14 @@ class RedirectIfAuthenticated
     public function handle($request, Closure $next, $guard = null)
     {
         if (Auth::guard($guard)->check()) {
-            return redirect('sadmin/dashboard');
+            if(Auth::user()->type == "SuperAdmin"){
+                return redirect('/sadmin/dashboard');
+            }else if(Auth::user()->type == "Manager"){
+                return redirect('/tdg-manager/dashboard');
+               
+            }else {
+                return redirect('/tdg/dashboard');
+            }
         }
         
         

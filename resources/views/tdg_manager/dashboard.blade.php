@@ -1,4 +1,4 @@
-@extends('layouts.tdg_member_layout')
+@extends('layouts.tdg_manager_layout')
 @section('content')
 <meta name="csrf-token" content="{{ csrf_token() }}"
 <div class="container-fluid">
@@ -391,7 +391,7 @@ $.ajax({
         'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
     },
     type: 'POST',
-    url: '/tdg/dashboard/timer',
+    url: '/tdg-manager/dashboard/timer',
     data: {
 
         'hr': hr,
@@ -415,7 +415,8 @@ $.ajax({
 }
 
 
-</script>  
+
+</script> 
 
 
 @endsection

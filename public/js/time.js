@@ -121,34 +121,6 @@ window.addEventListener('load', function () {
 
         cycle = setTimeout(timerCycle, 1000);
     }
-    function saveData(hr, min, sec, description) {
 
-        $.ajax({
-            headers: {
-                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-            },
-            type: 'POST',
-            url: '/tdg/dashboard/timer',
-            data: {
-
-                'hr': hr,
-                'min': min,
-                'sec': sec,
-                'description': description,
-
-            },
-            success: function (data) {
-                document.getElementById("time_msg").innerHTML = data.msg;
-                $("#time_msg").slideDown(1000);
-                $("#time_msg").delay(3000).slideUp(1000);
-            },
-            error: function (data, textStatus, errorThrown) {
-                console.log("Error:");
-                console.log(data);
-
-            },
-        });
-
-    }
 
 })

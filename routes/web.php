@@ -19,6 +19,9 @@ Route::get('/', function () {
 
 Auth::routes();
 
+//Site Routes
+Route::match(['get','post'],'/login','tdg_siteController@login')->name('Login');
+Route::get('/logout','tdg_siteController@logout')->name('logout');
 
 //Super Admin Route
 
@@ -27,15 +30,12 @@ Route::match(['get','post'],'/sadmin-login','sadmintdgController@sadmin_login')-
 Route::prefix('sadmin')->name('sadmin.')->middleware(['auth','admin'])->group(function(){
 
     Route::match(['get','post'],'/dashboard','sadmintdgController@dashboard')->name('dashboard');
-    Route::get('/logout','sadmintdgController@logout')->name('logout');
     Route::match(['get','post'],'/add-member','sadmintdgController@addMember')->name('addMember');
     Route::get('/viewMember','sadmintdgController@viewMember')->name('viewMember');
     Route::match(['get','post'],'/timesheet','sadmintdgController@timesheet')->name('timesheet');
 });
 
 //TDG member Route 
-
-Route::match(['get','post'],'/login','tdg_memberController@login')->name('Login');
 Route::prefix('tdg')->name('tdg.')->middleware(['auth','member'])->group(function(){
     Route::match(['get','post'],'/dashboard','tdg_memberController@dashboard')->name('dashboard');
     Route::match(['get','post'],'/dashboard/timer','tdg_memberController@timeTraker')->name('timer');
@@ -44,6 +44,15 @@ Route::prefix('tdg')->name('tdg.')->middleware(['auth','member'])->group(functio
 
   
 });
+//TDG manager Route
+Route::prefix('tdg-manager')->name('tdg-manager.')->middleware(['auth','manager'])->group(function(){
+    Route::match(['get','post'],'/dashboard','tdg_managerController@dashboard')->name('dashboard');
+    Route::match(['get','post'],'/dashboard/timer','tdg_managerController@timeTraker')->name('timer');
+    Route::match(['get','post'],'/profile','tdg_managerController@profile')->name('profile');
+    Route::match(['get','post'],'/timesheet','tdg_managerController@timesheet')->name('timesheet');
+    Route::match(['get','post'],'/add-project','tdg_managerController@addProject')->name('addProject');
+    Route::get('/getdepartment-person','tdg_managerController@getdepartmentPerson');
+});
 
 
-Route::get('/home', 'HomeController@index')->name('home');
+// Route::get('/home', 'HomeController@index')->name('home');
