@@ -8,6 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
     <meta name="author" content="">
+    <meta name="csrf_token" content="{{ csrf_token() }}" />
 
     <title id="panel_title">TDG WP</title>
 
@@ -59,7 +60,7 @@
 
             <!-- Nav Item - Pages Collapse Menu -->
             <li class="nav-item">
-                    
+
                     <span id="time_title" class="ml-3" style="color:white; font-size:20px"></span></a>
             </li>
             <li class="nav-item">
@@ -73,16 +74,14 @@
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities"
                     aria-expanded="true" aria-controls="collapseUtilities">
                     <i class="fas fa-fw fa-wrench"></i>
-                    <span>Utilities</span>
+                    <span>Projects</span>
                 </a>
                 <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities"
                     data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
-                        <h6 class="collapse-header">Custom Utilities:</h6>
-                        <a class="collapse-item" href="utilities-color.html">Colors</a>
-                        <a class="collapse-item" href="utilities-border.html">Borders</a>
-                        <a class="collapse-item" href="utilities-animation.html">Animations</a>
-                        <a class="collapse-item" href="utilities-other.html">Other</a>
+                        <h6 class="collapse-header">Project Details</h6>
+                        <a class="collapse-item" href="{{ route('tdg.projects')}}">My Projects</a>
+
                     </div>
                 </div>
             </li>
@@ -378,7 +377,7 @@
             </div>
         </div>
     </div>
-           
+
 
     <!-- Bootstrap core JavaScript-->
     <script src="{{asset('vendor/jquery/jquery.min.js')}}"></script>
@@ -391,5 +390,9 @@
     <script src="{{asset('js/sb-admin-2.min.js')}}"></script>
 
 </body>
+<script>
+
+
+</script>
 
 </html>

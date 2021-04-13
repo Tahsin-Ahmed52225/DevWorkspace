@@ -2,7 +2,7 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
-
+use App\User;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -14,6 +14,10 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
+Route::get('/user', function () {
+    return User::all()->toJson();
+});
+Route::middleware('auth:api')->group(function () {
+    Route::get('notifications/{notification}/', 'NotificationController@Getnotify');
+    Route::post('create/{project::project}/notify', 'NotificationController@Postnotify');
 });

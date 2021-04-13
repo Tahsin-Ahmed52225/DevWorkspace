@@ -9,6 +9,8 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
+    <script src="{{ asset('js/app.js') }}"></script>
+
     <title id="panel_title">TDG WP</title>
 
     <!-- Custom fonts for this template-->
@@ -74,7 +76,7 @@
                         <a class="collapse-item" href='{{ route("tdg-manager.addProject") }}'>Add Projects</a>
                         <a class="collapse-item" href="utilities-border.html">View Projects</a>
                         <a class="collapse-item" href="utilities-animation.html">Project Update</a>
-                       
+
                     </div>
                 </div>
             </li>
@@ -370,7 +372,7 @@
             </div>
         </div>
     </div>
-           
+
 
     <!-- Bootstrap core JavaScript-->
     <script src="{{asset('vendor/jquery/jquery.min.js')}}"></script>
@@ -381,7 +383,7 @@
 
     <!-- Custom scripts for all pages-->
     <script src="{{asset('js/sb-admin-2.min.js')}}"></script>
-    
+
 
 </body>
 

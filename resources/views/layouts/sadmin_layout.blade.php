@@ -8,6 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
     <meta name="author" content="">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <title>TDG SUPER</title>
 
@@ -66,8 +67,8 @@
                 </a>
                 <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
-                       
-                               <a class="collapse-item" href="{{ route('sadmin.addMember') }}"> <i class="fa fa-user-plus pr-1" ></i> Add Member</a> 
+
+                               <a class="collapse-item" href="{{ route('sadmin.addMember') }}"> <i class="fa fa-user-plus pr-1" ></i> Add Member</a>
                                <a class="collapse-item" href="{{ route('sadmin.viewMember') }}"><i class="fa fa-users pr-1" ></i>View Member</a>
                                <a class="collapse-item" href="{{ route('sadmin.timesheet') }}"><i class="fa fa-clock pr-1" ></i>View Timesheet</a>
                     </div>
@@ -386,7 +387,7 @@
         </div>
     </div>
 
-           
+
 
     <!-- Bootstrap core JavaScript-->
     <script src="{{asset('vendor/jquery/jquery.min.js')}}"></script>

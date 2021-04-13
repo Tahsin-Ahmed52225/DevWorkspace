@@ -2,13 +2,14 @@
 
 namespace App;
 
+// use Laravel\Passport\HasApiTokens;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 
 class User extends Authenticatable
 {
-    use Notifiable;
+    use  Notifiable;
 
     /**
      * The attributes that are mass assignable.
@@ -31,6 +32,10 @@ class User extends Authenticatable
 
         'state',
 
+        'state',
+
+        'api_token',
+
     ];
 
     /**
@@ -39,7 +44,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $hidden = [
-        'password', 'remember_token',
+        'password', 'remember_token', 'api_token',
     ];
 
     /**
@@ -50,57 +55,42 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
-    
+
     public function isGodMODE()
 
     {
 
-        if($this->type == 'SuperAdmin')
-
-        {
+        if ($this->type == 'SuperAdmin') {
 
             return true;
-
-        }
-
-        else
-
-        {
+        } else {
 
             return false;
-
         }
-
     }
 
     public function isMember()
 
     {
 
-        if($this->type == 'Web Developer' or $this->type == 'Frontend Developer' or $this->type == 'Sale Exicutive' or $this->type == 'Graphics Designer')
-
-        {
+        if ($this->type == 'Web Developer' or $this->type == 'Frontend Developer' or $this->type == 'Sale Exicutive' or $this->type == 'Graphics Designer') {
 
             return true;
-
-        }
-
-        else
-
-        {
+        } else {
 
             return false;
-
         }
-
     }
     public function isManager()
     {
-        if($this->type == "Manager"){
+        if ($this->type == "Manager") {
             return true;
-        }
-        else{
+        } else {
             return false;
         }
+    }
+    public function notification()
+    {
+        return $this->hasMany('App\Notification');
     }
 }
