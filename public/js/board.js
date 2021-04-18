@@ -1,13 +1,3 @@
-// $('#exampleModal').on('show.bs.modal', function (event) {
-//     var button = $(event.relatedTarget) // Button that triggered the modal
-//     var recipient = button.data('whatever') // Extract info from data-* attributes
-//     var modal = $(this)
-//     modal.find('.modal-title').text('New message to ' + recipient)
-//     modal.find('.modal-body input').val(recipient)
-// })
-
-
-
 
 function allowDrop(ev) {
     ev.preventDefault();  // default is not to allow drop
@@ -54,9 +44,6 @@ function dropIt(ev) {
             console.log(p_id);
 
             $.ajax({
-                headers: {
-                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                },
                 type: 'GET',
                 url: '/tdg/projectStagechange',
                 data: {
@@ -66,15 +53,15 @@ function dropIt(ev) {
                 },
                 success: function (data) {
 
-                    console.log("Data changed ")
-                    console.log(data.msg);
+                    // console.log("Data changed ")
+                    // console.log(data.msg);
                     // console.log(p_id);
 
                 },
                 error: function (errorThrown) {
-                    console.log(data);
-                    console.log(p_id);
-                    console.log("Error:".errorThrown);
+                    // console.log(data);
+                    // console.log(p_id);
+                    // console.log("Error:".errorThrown);
 
                 },
             })

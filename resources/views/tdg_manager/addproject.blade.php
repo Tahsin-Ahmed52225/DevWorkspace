@@ -110,7 +110,7 @@
                     },
                     error: function (data, textStatus, errorThrown) {
                         console.log("Error:");
-                        console.log(data);
+                      //  console.log(data);
 
                     },
         })

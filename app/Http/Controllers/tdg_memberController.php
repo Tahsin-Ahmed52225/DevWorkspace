@@ -2,23 +2,16 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-
-
-
-use Validator;
-
-use Auth;
-
-use App\User;
-
-use App\timetrack;
-
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Response;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+
 
 use App\project;
-use Illuminate\Support\Facades\Auth as FacadesAuth;
-use Illuminate\Support\Facades\Hash;
+use App\timetrack;
+use App\Checknode;
+
 
 class tdg_memberController extends Controller
 {
@@ -76,8 +69,22 @@ class tdg_memberController extends Controller
 
     public function projects()
     {
-        $projects = project::where('manager_id', '=', auth()->id())->get();
-        //dd($projects);
+
+
+        // $projects = Auth::user()->project;
+        $projects = project::with('Checknode')->get();
+        // dd($projects);
+        // $projects = project::where('manager_id', '=', auth()->id())->get();
+
+        // $checknode = $projects->Checknode->checknode();
+        // dd($checknode);
+        //     $allnodes = DB::table('checknode')
+        //         ->join('project', 'project.id', '=', 'checknode.project_id')
+        //         ->get('checknode.*');
+
+        //   dd($allnodes);
+
+
         return view('tdg_member.projects', compact('projects'));
     }
 
@@ -92,7 +99,25 @@ class tdg_memberController extends Controller
         if ($request->ajax()) {
             project::where('id', $request->p_id)
                 ->update(['project_board' => $request->stage]);
-            // return response()->json(array('msg' => $msg), 200);
+        } else {
+            return view("tdg_member.dashboard");
+        }
+    }
+    public function addCheckNode(Request $request)
+    {
+
+        // dd($request);
+        if ($request->ajax()) {
+            $node =  Checknode::create([
+
+                'project_id' => $request->idm,
+
+                'node_name' => $request->node_name,
+
+                'added_member' => auth()->id(),
+            ]);
+            // //    dd($node);
+            return response()->json(array('msg' => "Sucessfull"), 200);
         } else {
             return view("tdg_member.dashboard");
         }

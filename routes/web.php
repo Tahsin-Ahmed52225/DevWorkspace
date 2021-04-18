@@ -46,12 +46,15 @@ Route::prefix('sadmin')->name('sadmin.')->middleware(['auth', 'admin'])->group(f
 //TDG member Route
 Route::prefix('tdg')->name('tdg.')->middleware(['auth', 'member'])->group(function () {
     Route::match(['get', 'post'], '/dashboard', 'tdg_memberController@dashboard')->name('dashboard');
-    Route::match(['get', 'post'], '/dashboard/timer', 'tdg_memberController@timeTraker')->name('timer');
     Route::match(['get', 'post'], '/profile', 'tdg_memberController@profile')->name('profile');
+    //Timer route
+    Route::match(['get', 'post'], '/dashboard/timer', 'tdg_memberController@timeTraker')->name('timer');
     Route::match(['get', 'post'], '/timesheet', 'tdg_memberController@timesheet')->name('timesheet');
+    //Project Board Route
     Route::match(['get', 'post'], '/projects', 'tdg_memberController@projects')->name('projects');
     Route::get('/downaloadProjectFile/{id}', 'tdg_memberController@downloadfile')->name('downloadFile');
     Route::get('/projectStagechange', 'tdg_memberController@changeStage')->name('changeStage');
+    Route::get('/addCheckNode', 'tdg_memberController@addCheckNode')->name('addnode');
 });
 //TDG manager Route
 Route::prefix('tdg-manager')->name('tdg-manager.')->middleware(['auth', 'manager'])->group(function () {

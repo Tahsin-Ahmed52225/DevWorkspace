@@ -18,4 +18,13 @@ class project extends Model
         'project_board',
         'priority',
     ];
+
+    public function checknode()
+    {
+        return $this->hasMany('App\Checknode');
+    }
+    public function user()
+    {
+        return $this->belongsTo('App\User');
+    }
 }

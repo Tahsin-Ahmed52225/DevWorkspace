@@ -89,8 +89,12 @@ class User extends Authenticatable
             return false;
         }
     }
-    public function notification()
+    // public function notification()
+    // {
+    //     return $this->hasMany('App\Notification');
+    // }
+    public function project()
     {
-        return $this->hasMany('App\Notification');
+        return $this->hasMany('App\project');
     }
 }
