@@ -64,33 +64,37 @@
                                                                         <i class="fas fa-check-circle mr-2"></i>{{  $value["node_name"] }}
                                                                     </div>
 
-                                                                        <form action="">
+
                                                                 {{-- Progress bar --}}
                                                                             <div class="progress mt-1 mb-1" style="width:50% ;">
                                                                                 <div class="progress-bar" role="progressbar" style="width: 25%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">25%</div>
                                                                             </div>
                                                                 {{-- Check list --}}
+                                                               {{-- @foreach ( $item->Checknode->Checklist as $list )
                                                                 <div class="mt-2 mb-2">
                                                                     <div class="form-check " style="width:50%;">
                                                                         <input  class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
                                                                         <label class="form-check-label" for="flexCheckDefault">
                                                                             <div>
-                                                                                asdfasdf asdffafas asdfasdf
+                                                                              {{  $list["list_body"] }}
                                                                             </div>
                                                                         </label>
                                                                         <i style="float:right;"class="fa fa-trash-alt "></i>
                                                                     </div>
 
                                                                 </div>
+                                                                @endforeach --}}
                                                                 {{-- Input box --}}
                                                                             <div>
-                                                                                <input type="text" style="width:50%" class="" id="">
-                                                                                <button style="padding: 5px 15px 4px 15px; font-size: 14px; margin-left: 15px;"type="submit" class="btn btn-primary">Add an item</button>
+                                                                                <form>
+                                                                                    <input type="text" style="width:50%" class="" id="list_item" onchange="new_value_list(this.value)">
+                                                                                    <button style="padding: 5px 15px 4px 15px; font-size: 14px; margin-left: 15px;"type="button" id="addlist" data-idl="{{ $value["id"] }}" class="btn btn-primary" onclick="add_list(getAttribute('data-idl'))">Add an item</button>
+                                                                                </form>
                                                                             </div>
                                                                             <div>
 
                                                                             </div>
-                                                                        </form>
+
                                                                     </div>
                                                                     @endforeach
                                                         {{--Check list ends--}}
@@ -136,6 +140,37 @@
             {{-- ----------- Todo Card Check node add Modal Ends---------------}}
 <script>
     var values;
+    var lists;
+
+    function new_value_list(box) {
+            lists = box;
+    }
+    function add_list(data_id){
+        var node_id = data_id;
+
+        console.log(node_id);
+        console.log(lists);
+
+        $.ajax({
+            type: 'GET',
+            url: '{{ route("tdg.addlist") }}',
+            data: {
+                'idl': node_id,
+                'list_body': lists,
+            },
+            success: function (data) {
+
+         //Have some work here
+                 console.log("succeed");
+
+            },
+            error: function (errorThrown) {
+
+                console.log("Error:".errorThrown);
+
+            },
+        })
+    }
     function new_value(box) {
             values = box;
     }

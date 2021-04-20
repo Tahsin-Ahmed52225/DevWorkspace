@@ -55,6 +55,7 @@ Route::prefix('tdg')->name('tdg.')->middleware(['auth', 'member'])->group(functi
     Route::get('/downaloadProjectFile/{id}', 'tdg_memberController@downloadfile')->name('downloadFile');
     Route::get('/projectStagechange', 'tdg_memberController@changeStage')->name('changeStage');
     Route::get('/addCheckNode', 'tdg_memberController@addCheckNode')->name('addnode');
+    Route::get('/addlist', 'tdg_memberController@addlist')->name('addlist');
 });
 //TDG manager Route
 Route::prefix('tdg-manager')->name('tdg-manager.')->middleware(['auth', 'manager'])->group(function () {

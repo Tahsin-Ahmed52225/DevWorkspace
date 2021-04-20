@@ -17,7 +17,7 @@ class Checknode extends Model
 
     ];
 
-    public function Checknode()
+    public function Project()
     {
         return $this->belongsTo('App\project');
     }

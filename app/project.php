@@ -19,11 +19,11 @@ class project extends Model
         'priority',
     ];
 
-    public function checknode()
+    public function Checknode()
     {
         return $this->hasMany('App\Checknode');
     }
-    public function user()
+    public function User()
     {
         return $this->belongsTo('App\User');
     }

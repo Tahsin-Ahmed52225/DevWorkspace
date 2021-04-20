@@ -15,9 +15,9 @@ class Checklist extends Migration
     {
         Schema::create('checklist', function (Blueprint $table) {
             $table->id();
-            $table->integer("node_id");
+            $table->foreignId("checknode_id");
             $table->text("list_body");
-            $table->boolean("stage");
+            $table->integer("stage");
             $table->integer("added_member");
             $table->timestamps();
         });
