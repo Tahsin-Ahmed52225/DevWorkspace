@@ -11,6 +11,7 @@ use Illuminate\Support\Facades\DB;
 use App\project;
 use App\timetrack;
 use App\Checknode;
+use App\Checklist;
 
 
 class tdg_memberController extends Controller
@@ -70,19 +71,8 @@ class tdg_memberController extends Controller
     public function projects()
     {
 
-
-        // $projects = Auth::user()->project;
-        $projects = project::with('Checknode')->get();
-        // dd($projects);
-        // $projects = project::where('manager_id', '=', auth()->id())->get();
-
-        // $checknode = $projects->Checknode->checknode();
-        // dd($checknode);
-        //     $allnodes = DB::table('checknode')
-        //         ->join('project', 'project.id', '=', 'checknode.project_id')
-        //         ->get('checknode.*');
-
-        //   dd($allnodes);
+        $projects = project::with(['Checknode'])->where("project.manager_id", auth()->id())->get();
+        //   dd($projects);
 
 
         return view('tdg_member.projects', compact('projects'));
@@ -121,5 +111,20 @@ class tdg_memberController extends Controller
         } else {
             return view("tdg_member.dashboard");
         }
+    }
+
+    public function addlist(Request $request)
+    {
+        if ($request->ajax()) {
+            $list = Checklist::create([
+                'checknode_id' => $request->idl,
+                'list_body' => $request->list_body,
+                'stage' => 0,
+                'added_member' => auth()->id(),
+            ]);
+
+            return response()->json(array('msg' => "Sucessfull"), 200);
+        }
+        return view("tdg_member.dashboard");
     }
 }
